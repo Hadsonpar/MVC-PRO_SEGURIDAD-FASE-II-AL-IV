@@ -1,0 +1,34 @@
+﻿@model PRO_SEGURIDAD.Models.Login
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="divLogin" style="text-align: center">
+        <h2>Iniciar Sesion</h2>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+                        
+            <div id="divMessage">
+                @Html.ValidationSummary()
+            </div>
+                       
+            <div id="divUsuario">
+                <label>Usuario :</label>
+                @Html.TextBoxFor(m => m.usuario)
+                @Html.ValidationMessageFor(m => m.usuario)
+
+            </div>
+            <div id="divPassword">
+                <label>Password:</label>
+                @Html.PasswordFor(m => m.password)
+                @Html.ValidationMessageFor(m => m.password)
+            </div>
+            <div id="Botones">
+                <input id="BtnLogin" type="submit" class="btn btn-success btn-pressure" name="BtnLogin" value="Login" />
+                <input id="BtnReset" type="reset" class="btn btn-info btn-pressure" name="BtnReset" value="Reset" />
+            </div>
+        }
+</div>
